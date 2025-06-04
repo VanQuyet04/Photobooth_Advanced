@@ -78,15 +78,15 @@
 }
 
 .photo-frame-display.candy {
-  border: 8px solid #FFB6C1;
-  box-shadow: 0 0 20px rgba(255,182,193,0.4);
+  border: 8px solid #FF69B4;
+  box-shadow: 0 0 15px rgba(255,105,180,0.3);
   background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
 }
 
 .photo-frame-display.pastel {
-  border: 8px solid #E0BBE4;
-  box-shadow: 0 0 20px rgba(224,187,228,0.4);
-  background: linear-gradient(135deg, #E0BBE4, #957DAD);
+  border: 8px solid #E6E6FA;
+  box-shadow: 0 0 15px rgba(230,230,250,0.3);
+  background: linear-gradient(45deg, #E6E6FA, #F8F8FF);
 }
 
 .photo-frame-display.mint {
@@ -97,70 +97,88 @@
 
 .photo-frame-display.lavender {
   border: 8px solid #E6E6FA;
-  box-shadow: 0 0 20px rgba(230,230,250,0.4);
-  background: linear-gradient(135deg, #E6E6FA, #D8BFD8);
+  box-shadow: 0 0 20px rgba(230,230,250,0.3);
+  background: linear-gradient(45deg, #E6E6FA, #F8F8FF, #E6E6FA);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
 }
 
 .photo-frame-display.sunset {
-  border: 8px solid #FFA07A;
-  box-shadow: 0 0 20px rgba(255,160,122,0.4);
-  background: linear-gradient(45deg, #FFA07A, #FFB6C1);
+  border: 8px solid #FFB6C1;
+  box-shadow: 0 0 15px rgba(255,182,193,0.3);
+  background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
 }
 
 .photo-frame-display.rainbow {
-  border: 8px solid #fff;
+  border: 8px solid white;
   box-shadow: 0 0 25px rgba(255,255,255,0.5);
   background: linear-gradient(45deg, #FF9A9E, #FAD0C4, #FEE140, #FA709A, #FEE140, #FAD0C4, #FF9A9E);
   background-size: 200% 200%;
   animation: gradient 15s ease infinite;
 }
 
+.photo-frame-display.elegant {
+  border: 8px solid #F5F5F5;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  background: linear-gradient(45deg, #E6E6FA, #F8F8FF, #E6E6FA);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
+.photo-frame-display.rose {
+  border: 8px solid #FFF0F5;
+  box-shadow: 0 0 20px rgba(255,192,203,0.2);
+  background: linear-gradient(45deg, #FFF0F5, #FFE4E1, #FFF0F5);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
 .photo-frame-display.ocean {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #00BFFF, #87CEEB, #1E90FF, #00BFFF);
+  border: 8px solid #E0FFFF;
+  box-shadow: 0 0 20px rgba(0,191,255,0.2);
+  background: linear-gradient(45deg, #87CEEB, #B0E0E6, #87CEEB);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
-.photo-frame-display.cherry {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #FF69B4, #FF1493, #FF69B4, #FFB6C1);
+.photo-frame-display.sky {
+  border: 8px solid #F0F8FF;
+  box-shadow: 0 0 20px rgba(135,206,235,0.2);
+  background: linear-gradient(45deg, #F0F8FF, #E0FFFF, #F0F8FF);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
-.photo-frame-display.aurora {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #7FFFD4, #00CED1, #20B2AA, #48D1CC);
+.photo-frame-display.peach {
+  border: 8px solid #FFDAB9;
+  box-shadow: 0 0 20px rgba(255,218,185,0.3);
+  background: linear-gradient(45deg, #FFDAB9, #FFE4C4, #FFDAB9);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
-.photo-frame-display.rosegold {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #FFB6C1, #FFD700, #FFC0CB, #FFD700);
+.photo-frame-display.sapphire {
+  border: 8px solid #B0C4DE;
+  box-shadow: 0 0 20px rgba(70,130,180,0.3);
+  background: linear-gradient(45deg, #4682B4, #87CEEB, #4682B4);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
-.photo-frame-display.lavender-dream {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #E6E6FA, #D8BFD8, #DDA0DD, #EE82EE);
+.photo-frame-display.royal {
+  border: 8px solid #D8BFD8;
+  box-shadow: 0 0 20px rgba(147,112,219,0.3);
+  background: linear-gradient(45deg, #9370DB, #D8BFD8, #9370DB);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
-.photo-frame-display.pearl {
-  border: 8px solid #fff;
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-  background: linear-gradient(45deg, #F5F5F5, #E8E8E8, #DCDCDC, #F0F0F0);
+.photo-frame-display.emerald {
+  border: 8px solid #98FB98;
+  box-shadow: 0 0 20px rgba(50,205,50,0.2);
+  background: linear-gradient(45deg, #32CD32, #98FB98, #32CD32);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
 }
 
 @keyframes gradient {

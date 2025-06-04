@@ -113,7 +113,7 @@ const FrameSelector = ({ selectedFrame, selectedIcon, onFrameSelect, onIconSelec
             <div
               key={frame.id}
               className={`frame-option ${selectedFrame === frame.id ? 'selected' : ''}`}
-              onClick={() => onFrameSelect(frame.id)}
+              onClick={() => onFrameSelect(frame)}
             >
               <div className="frame-preview" style={frame.style}>
                 <div className="preview-image"></div>
@@ -130,7 +130,7 @@ const FrameSelector = ({ selectedFrame, selectedIcon, onFrameSelect, onIconSelec
           {icons.map(icon => (
             <div
               key={icon.id}
-              className={`icon-option ${selectedIcon === icon.emoji ? 'selected' : ''}`}
+              className={`icon-option ${selectedIcon?.emoji === icon.emoji ? 'selected' : ''}`}
               onClick={() => onIconSelect(icon)}
             >
               <span className="icon-emoji">{icon.emoji}</span>
