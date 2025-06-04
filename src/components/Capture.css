@@ -1,0 +1,456 @@
+.capture-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E0F7FF 0%, #FFE5E5 100%);
+  position: relative;
+}
+
+.content-section {
+  flex: 3;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+.photo-frame-display {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #fff;
+  backdrop-filter: blur(10px);
+  width: 25%;
+  max-width: 200px;
+  position: relative;
+}
+
+/* Style cho khung thống nhất */
+.photo-frame-display.classic {
+  border: 8px solid #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.photo-frame-display.polaroid {
+  border: 12px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  background: #fff;
+  padding: 10px;
+}
+
+.photo-frame-display.vintage {
+  border: 10px solid #8B4513;
+  box-shadow: 0 0 15px rgba(139,69,19,0.3);
+}
+
+.photo-frame-display.modern {
+  border: 2px solid #333;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+.photo-frame-display.golden {
+  border: 8px solid #FFD700;
+  box-shadow: 0 0 25px rgba(255,215,0,0.3);
+  background: linear-gradient(45deg, #FFD700, #FFF8DC);
+}
+
+.photo-frame-display.neon {
+  border: 4px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  background: rgba(0,0,0,0.8);
+}
+
+.photo-frame-display.watercolor {
+  border: 8px solid #E0F7FA;
+  box-shadow: 0 0 20px rgba(224,247,250,0.5);
+  background: linear-gradient(135deg, #E0F7FA, #B2EBF2);
+}
+
+.photo-frame-display.wooden {
+  border: 10px solid #8B4513;
+  box-shadow: 0 0 15px rgba(139,69,19,0.3);
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+}
+
+.photo-frame-display.candy {
+  border: 8px solid #FFB6C1;
+  box-shadow: 0 0 20px rgba(255,182,193,0.4);
+  background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
+}
+
+.photo-frame-display.pastel {
+  border: 8px solid #E0BBE4;
+  box-shadow: 0 0 20px rgba(224,187,228,0.4);
+  background: linear-gradient(135deg, #E0BBE4, #957DAD);
+}
+
+.photo-frame-display.mint {
+  border: 8px solid #98FF98;
+  box-shadow: 0 0 20px rgba(152,255,152,0.4);
+  background: linear-gradient(45deg, #98FF98, #90EE90);
+}
+
+.photo-frame-display.lavender {
+  border: 8px solid #E6E6FA;
+  box-shadow: 0 0 20px rgba(230,230,250,0.4);
+  background: linear-gradient(135deg, #E6E6FA, #D8BFD8);
+}
+
+.photo-frame-display.sunset {
+  border: 8px solid #FFA07A;
+  box-shadow: 0 0 20px rgba(255,160,122,0.4);
+  background: linear-gradient(45deg, #FFA07A, #FFB6C1);
+}
+
+.photo-frame-display.rainbow {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #FF9A9E, #FAD0C4, #FEE140, #FA709A, #FEE140, #FAD0C4, #FF9A9E);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.ocean {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #00BFFF, #87CEEB, #1E90FF, #00BFFF);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.cherry {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #FF69B4, #FF1493, #FF69B4, #FFB6C1);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.aurora {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #7FFFD4, #00CED1, #20B2AA, #48D1CC);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.rosegold {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #FFB6C1, #FFD700, #FFC0CB, #FFD700);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.lavender-dream {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #E6E6FA, #D8BFD8, #DDA0DD, #EE82EE);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.photo-frame-display.pearl {
+  border: 8px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #F5F5F5, #E8E8E8, #DCDCDC, #F0F0F0);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.frame-slot {
+  width: 100%;
+  height: 160px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.frame-slot:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.frame-slot:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.frame-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.frame-slot.empty-slot {
+  background: #f8f8f8;
+  border: 2px dashed #ddd;
+  color: #999;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Style cho icon ở vị trí giao nhau */
+.frame-icon {
+  position: absolute;
+  font-size: 32px;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transform: translate(-50%, -50%);
+}
+
+.frame-icon-1 {
+  top: 22%; /* Vị trí 1/4 từ trên xuống */
+  left: 10%;
+}
+
+.frame-icon-2 {
+  top: 45%; /* Vị trí giữa */
+  right: -2%;
+}
+
+.frame-icon-3 {
+  top: 66%; /* Vị trí 3/4 từ trên xuống */
+  left: 10%;
+}
+
+.empty-slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ccc;
+  background: #f8f8f8;
+  border-radius: 6px;
+}
+
+.camera-view {
+  width: 100%;
+  height: 80vh;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 4px solid #fff;
+  margin-bottom: 2rem;
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.preview-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.countdown-number {
+  font-size: 8rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.capture-btn, .back-btn, .download-btn, .retake-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+}
+
+.capture-btn {
+  background: linear-gradient(45deg, #4A90E2, #FF69B4);
+  color: white;
+}
+
+.capture-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  background: linear-gradient(45deg, #6BA4E7, #FF8DA1);
+  color: white;
+}
+
+.download-btn {
+  background: linear-gradient(45deg, #87CEEB, #FFB6C1);
+  color: white;
+}
+
+.retake-btn {
+  background: linear-gradient(45deg, #FF6B6B, #FF8E8E);
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.capture-btn:hover:not(:disabled), .back-btn:hover, .download-btn:hover, .retake-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+}
+
+.retake-btn:hover {
+  background: linear-gradient(45deg, #FF8E8E, #FF6B6B);
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+  transform: scale(1.05) translateY(-2px);
+}
+
+.mode-indicator {
+  font-size: 1.2rem;
+  color: #6BA4E7;
+  margin-top: 1rem;
+  background: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #87CEEB, #FFB6C1) 1;
+}
+
+.capturing-indicator {
+  font-size: 1.2rem;
+  color: #4A90E2;
+  padding: 1rem 2rem;
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+}
+
+.camera-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  z-index: 20;
+}
+
+.camera-error p {
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: linear-gradient(45deg, #4A90E2, #FF69B4);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retry-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+}
+
+.frame-brand {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  font-size: 1.2rem;
+  color: #FF69B4;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+} 

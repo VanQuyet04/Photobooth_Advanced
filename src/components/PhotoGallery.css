@@ -1,0 +1,92 @@
+.photo-gallery {
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.photo-gallery.left {
+  left: 0;
+}
+
+.photo-gallery.right {
+  right: 0;
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.photo-frame {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+
+.photo-frame:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.photo-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.photo-inner img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-frame:hover .photo-inner img {
+  transform: scale(1.1);
+}
+
+.photo-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-frame:hover .photo-title {
+  opacity: 1;
+}
+
+/* Thêm hiệu ứng polaroid */
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: white;
+  z-index: -1;
+  transform: rotate(2deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} 
