@@ -28,6 +28,148 @@
   width: 25%;
   max-width: 200px;
   position: relative;
+  aspect-ratio: 3/4;
+}
+
+/* Thêm trang trí cute cho phần trên cùng của khung */
+.photo-frame-display::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.photo-frame-display::after {
+  content: '✨';
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Thêm các trang trí phụ */
+.photo-frame-display .frame-decoration {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: -10px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 1;
+}
+
+.photo-frame-display .frame-decoration::before {
+  content: '🌸';
+  font-size: 16px;
+  animation: swing 2s ease-in-out infinite;
+  margin-left: -15px;
+}
+
+.photo-frame-display .frame-decoration::after {
+  content: '🌟';
+  font-size: 16px;
+  animation-delay: 0.5s;
+}
+
+/* Animation cho các hiệu ứng */
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Cập nhật style cho từng loại khung */
+.photo-frame-display.classic::before {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+}
+
+.photo-frame-display.vintage::before {
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+}
+
+.photo-frame-display.modern::before {
+  background: linear-gradient(45deg, #333, #666);
+}
+
+.photo-frame-display.candy::before {
+  background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+}
+
+.photo-frame-display.pastel::before {
+  background: linear-gradient(45deg, #E6E6FA, #F8F8FF);
+}
+
+.photo-frame-display.rainbow::before {
+  background: linear-gradient(45deg, #FF9A9E, #FAD0C4, #FEE140, #FA709A);
+  animation: rainbow 3s linear infinite;
+}
+
+.photo-frame-display.elegant::before {
+  background: linear-gradient(45deg, #F5F5F5, #E6E6FA);
+}
+
+.photo-frame-display.rose::before {
+  background: linear-gradient(45deg, #FFF0F5, #FFE4E1);
+}
+
+.photo-frame-display.ocean::before {
+  background: linear-gradient(45deg, #87CEEB, #B0E0E6);
+}
+
+.photo-frame-display.sky::before {
+  background: linear-gradient(45deg, #F0F8FF, #E0FFFF);
+}
+
+.photo-frame-display.peach::before {
+  background: linear-gradient(45deg, #FFDAB9, #FFE4C4);
+}
+
+.photo-frame-display.sapphire::before {
+  background: linear-gradient(45deg, #4682B4, #87CEEB);
+}
+
+.photo-frame-display.royal::before {
+  background: linear-gradient(45deg, #9370DB, #D8BFD8);
+}
+
+.photo-frame-display.emerald::before {
+  background: linear-gradient(45deg, #32CD32, #98FB98);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Style cho khung thống nhất */
@@ -195,7 +337,7 @@
 
 .frame-slot {
   width: 100%;
-  height: 160px;
+  height: calc((100% - 80px) / 4);
   margin-bottom: 0;
   border-radius: 8px;
   overflow: hidden;
@@ -242,18 +384,20 @@
 }
 
 .frame-icon-1 {
-  top: 22%; /* Vị trí 1/4 từ trên xuống */
+  top: 25%;
   left: 10%;
 }
 
 .frame-icon-2 {
-  top: 45%; /* Vị trí giữa */
-  right: -2%;
+  top: 48%;
+  left: 90%;
+  transform: translate(-50%, -50%) rotate(15deg);
 }
 
 .frame-icon-3 {
-  top: 66%; /* Vị trí 3/4 từ trên xuống */
+  top: 70%;
   left: 10%;
+  transform: translate(-50%, -50%) rotate(-15deg);
 }
 
 .empty-slot {
@@ -449,19 +593,20 @@
 }
 
 .frame-brand {
-  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-  font-size: 1.2rem;
-  color: #FF69B4;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
   font-weight: bold;
-  letter-spacing: 1px;
-  background: linear-gradient(45deg, #FF69B4, #FFB6C1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 2s infinite;
+  color: #333;
+  text-align: center;
+  width: calc(100% - 32px);
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  margin-top: 10px;
+  z-index: 3;
 }
 
 @keyframes shimmer {

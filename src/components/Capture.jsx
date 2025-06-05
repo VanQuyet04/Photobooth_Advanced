@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 import FrameSelector from './FrameSelector';
 import './Capture.css';
 
@@ -96,6 +97,7 @@ const Capture = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const streamRef = useRef(null);
   const countdownRef = useRef(null);
+  const frameRef = useRef(null);
   
   // Sử dụng ref để lưu currentPhoto index để tránh stale closure
   const currentPhotoRef = useRef(0);
@@ -238,72 +240,82 @@ const Capture = () => {
   };
 
   const downloadFrame = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    // Lấy phần tử frame đang hiển thị
+    const frameElement = document.querySelector('.photo-frame-display');
+    const frameRect = frameElement.getBoundingClientRect();
     
-    // Kích thước canvas cho 4 ảnh
-    canvas.width = 800;
-    canvas.height = 600;
+    // Tính toán kích thước canvas để chứa đủ toàn bộ khung
+    const padding = 40; // Thêm padding để tránh cắt khung
+    const canvasWidth = frameRect.width + (padding * 2);
+    const canvasHeight = frameRect.height + (padding * 2);
     
-    // Vẽ background
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Vẽ từng ảnh
-    const promises = capturedImages.map((imageUrl, index) => {
-      if (!imageUrl) return Promise.resolve();
-      
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          const x = (index % 2) * 400;
-          const y = Math.floor(index / 2) * 300;
+    // Sử dụng html2canvas để chụp chính xác phần tử
+    html2canvas(frameElement, {
+      scale: 4, // Tăng độ phân giải
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null, // Để nền trong suốt
+      logging: false,
+      width: canvasWidth,
+      height: canvasHeight,
+      x: -padding,
+      y: -padding,
+      onclone: (clonedDoc) => {
+        // Đảm bảo các phần tử được clone có style giống hệt
+        const clonedFrame = clonedDoc.querySelector('.photo-frame-display');
+        if (clonedFrame) {
+          // Giữ nguyên kích thước và style như preview
+          clonedFrame.style.width = `${frameRect.width}px`;
+          clonedFrame.style.height = `${frameRect.height}px`;
+          clonedFrame.style.transform = 'none';
+          clonedFrame.style.position = 'relative';
+          clonedFrame.style.left = `${padding}px`;
+          clonedFrame.style.top = `${padding}px`;
+          clonedFrame.style.backgroundColor = 'transparent'; // Đảm bảo nền trong suốt
           
-          // Vẽ khung ảnh
-          ctx.save();
-          if (selectedFrame === 'classic') {
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 8;
-            ctx.strokeRect(x + 4, y + 4, 392, 292);
-          } else if (selectedFrame === 'polaroid') {
-            ctx.fillStyle = '#fff';
-            ctx.fillRect(x, y, 400, 300);
-            ctx.fillStyle = '#000';
-            ctx.fillRect(x + 10, y + 10, 380, 280);
-          } else if (selectedFrame === 'vintage') {
-            ctx.strokeStyle = '#8B4513';
-            ctx.lineWidth = 10;
-            ctx.strokeRect(x + 5, y + 5, 390, 290);
-          } else if (selectedFrame === 'modern') {
-            ctx.strokeStyle = '#333';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(x + 1, y + 1, 398, 298);
+          // Đảm bảo các icon có vị trí chính xác
+          const icons = clonedFrame.querySelectorAll('.frame-icon');
+          icons.forEach(icon => {
+            icon.style.position = 'absolute';
+            icon.style.zIndex = '2';
+          });
+
+          // Đảm bảo các ảnh giữ nguyên kích thước như preview
+          const images = clonedFrame.querySelectorAll('img');
+          images.forEach(img => {
+            img.style.objectFit = 'cover';
+            img.style.width = '100%';
+            img.style.height = '100%';
+          });
+
+          // Giữ nguyên style của brand như preview
+          const brand = clonedFrame.querySelector('.frame-brand');
+          if (brand) {
+            // Không thay đổi bất kỳ style nào của brand
+            const computedStyle = window.getComputedStyle(brand);
+            Object.assign(brand.style, {
+              position: computedStyle.position,
+              bottom: computedStyle.bottom,
+              left: computedStyle.left,
+              transform: computedStyle.transform,
+              width: computedStyle.width,
+              padding: computedStyle.padding,
+              backgroundColor: computedStyle.backgroundColor,
+              borderRadius: computedStyle.borderRadius,
+              zIndex: computedStyle.zIndex,
+              fontSize: computedStyle.fontSize,
+              fontWeight: computedStyle.fontWeight,
+              color: computedStyle.color,
+              textShadow: computedStyle.textShadow
+            });
           }
-          
-          // Vẽ ảnh
-          ctx.drawImage(img, x + 10, y + 10, 380, 280);
-          
-          // Vẽ icon nếu có
-          if (selectedIcon) {
-            const iconSize = 40;
-            const iconX = x + 340;
-            const iconY = y + 20;
-            ctx.font = `${iconSize}px Arial`;
-            ctx.fillText(selectedIcon.emoji, iconX, iconY + iconSize);
-          }
-          
-          ctx.restore();
-          resolve();
-        };
-        img.src = imageUrl;
-      });
-    });
-    
-    // Khi tất cả ảnh đã được vẽ
-    Promise.all(promises).then(() => {
+        }
+      }
+    }).then(canvas => {
+      // Tạo link tải về với chất lượng cao và nền trong suốt
       const link = document.createElement('a');
-      link.download = `photobooth-${Date.now()}.jpg`;
-      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.download = `photobooth-${Date.now()}.png`; // Đổi sang PNG để giữ nền trong suốt
+      link.href = canvas.toDataURL('image/png', 1.0);
       link.click();
     });
   };
@@ -420,7 +432,8 @@ const Capture = () => {
         </div>
       </div>
 
-      <div className={`photo-frame-display ${selectedFrame}`}>
+      <div className={`photo-frame-display ${selectedFrame}`} ref={frameRef}>
+        <div className="frame-decoration"></div>
         {capturedImages.map((slot, index) => (
           <div key={index} className="frame-slot">
             {slot ? (
