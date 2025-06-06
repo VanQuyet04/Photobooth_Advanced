@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import FrameSelector from './FrameSelector';
+import FilterSelector from './FilterSelector';
 import './Capture.css';
 
 const frames = [
@@ -95,12 +96,26 @@ const Capture = () => {
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [selectedFrame, setSelectedFrame] = useState('classic');
   const [selectedIcon, setSelectedIcon] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState('normal');
   const streamRef = useRef(null);
   const countdownRef = useRef(null);
   const frameRef = useRef(null);
   
   // Sử dụng ref để lưu currentPhoto index để tránh stale closure
   const currentPhotoRef = useRef(0);
+
+  const filters = [
+    { id: 'normal', name: 'Bình thường', style: {} },
+    { id: 'vintage', name: 'Vintage', style: { filter: 'sepia(0.5) contrast(1.2) brightness(0.9)' } },
+    { id: 'grayscale', name: 'Đen trắng', style: { filter: 'grayscale(1)' } },
+    { id: 'warm', name: 'Ấm áp', style: { filter: 'sepia(0.3) saturate(1.5) brightness(1.1)' } },
+    { id: 'cool', name: 'Mát mẻ', style: { filter: 'hue-rotate(30deg) saturate(1.2)' } },
+    { id: 'dramatic', name: 'Kịch tính', style: { filter: 'contrast(1.4) saturate(1.2) brightness(0.9)' } },
+    { id: 'fade', name: 'Mờ nhạt', style: { filter: 'opacity(0.8) saturate(0.8)' } },
+    { id: 'vibrant', name: 'Rực rỡ', style: { filter: 'saturate(1.5) contrast(1.2)' } },
+    { id: 'noir', name: 'Noir', style: { filter: 'grayscale(1) contrast(1.4) brightness(0.9)' } },
+    { id: 'dreamy', name: 'Mơ mộng', style: { filter: 'brightness(1.1) contrast(0.9) saturate(1.2)' } }
+  ];
 
   useEffect(() => {
     startCamera();
@@ -358,6 +373,15 @@ const Capture = () => {
     setSelectedIcon(icon);
   };
 
+  const handleFilterSelect = (filter) => {
+    setSelectedFilter(filter.id);
+  };
+
+  const getFilterStyle = (filterId) => {
+    const filter = filters.find(f => f.id === filterId);
+    return filter ? filter.style : {};
+  };
+
   return (
     <div className="capture-container">
       <div className="content-section">
@@ -381,6 +405,7 @@ const Capture = () => {
                 autoPlay
                 playsInline
                 className="camera-feed"
+                style={getFilterStyle(selectedFilter)}
               />
             </>
           )}
@@ -397,14 +422,9 @@ const Capture = () => {
                 {isComplete ? 'Chụp lại' : 'Bắt đầu chụp'}
               </button>
               {isComplete && (
-                <>
-                  <button className="download-btn" onClick={downloadFrame}>
-                    Tải về
-                  </button>
-                  <button className="reset-btn" onClick={resetCapture}>
-                    Làm mới
-                  </button>
-                </>
+                <button className="download-btn" onClick={downloadFrame}>
+                  Tải về
+                </button>
               )}
             </>
           ) : (
@@ -417,6 +437,11 @@ const Capture = () => {
             Quay lại
           </button>
         </div>
+
+        <FilterSelector
+          selectedFilter={selectedFilter}
+          onFilterSelect={handleFilterSelect}
+        />
 
         {isComplete && (
           <FrameSelector
@@ -437,7 +462,11 @@ const Capture = () => {
         {capturedImages.map((slot, index) => (
           <div key={index} className="frame-slot">
             {slot ? (
-              <img src={slot} alt={`Frame ${index + 1}`} />
+              <img 
+                src={slot} 
+                alt={`Frame ${index + 1}`} 
+                style={getFilterStyle(selectedFilter)}
+              />
             ) : (
               <div className="empty-slot">+</div>
             )}
