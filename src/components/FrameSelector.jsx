@@ -91,7 +91,6 @@ const icons = [
   { id: 'sun', emoji: '☀️', name: 'Mặt trời' },
   { id: 'moon', emoji: '🌙', name: 'Mặt trăng' },
   { id: 'cloud', emoji: '☁️', name: 'Mây' },
-  { id: 'rainbow', emoji: '🌈', name: 'Cầu vồng' },
   { id: 'unicorn', emoji: '🦄', name: 'Kỳ lân' },
   { id: 'panda', emoji: '🐼', name: 'Gấu trúc' },
   { id: 'cat', emoji: '🐱', name: 'Mèo' },
