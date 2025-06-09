@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   width: 75%;
-  margin-right: 25%; /* Thêm margin để tránh nội dung bị che bởi frame */
+  margin-right: 25%;
 }
 
 .photo-frame-display {
@@ -30,7 +30,7 @@
   max-width: 200px;
   position: fixed;
   right: 0;
-  top: 20px; /* Đẩy lên trên một chút */
+  top: 20px;
   aspect-ratio: 3/4;
   z-index: 1000;
   margin-bottom: 40px;
@@ -716,34 +716,44 @@
   .photo-frame-display {
     width: 30%;
   }
+  
+  .camera-view {
+    height: 70vh;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .capture-container {
-    flex-direction: column;
-  }
-  
   .content-section {
-    width: 100%;
-    margin-right: 0;
-    padding: 1rem;
+    width: 65%;
+    margin-right: 35%;
   }
   
   .photo-frame-display {
-    position: relative;
-    width: 100%;
-    max-width: none;
-    height: auto;
-    margin: 1rem 0;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
+    width: 35%;
   }
   
-  .frame-slot {
-    min-width: 120px;
-    height: 160px;
-    margin-right: 10px;
+  .camera-view {
+    height: 65vh;
+  }
+  
+  .controls {
+    gap: 0.8rem;
+  }
+  
+  .capture-btn, .back-btn, .download-btn, .retake-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content-section {
+    width: 60%;
+    margin-right: 40%;
+  }
+  
+  .photo-frame-display {
+    width: 40%;
   }
   
   .camera-view {
@@ -751,33 +761,12 @@
   }
   
   .controls {
-    flex-direction: column;
-    align-items: center;
+    gap: 0.5rem;
   }
   
   .capture-btn, .back-btn, .download-btn, .retake-btn {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .content-section {
-    padding: 0.5rem;
-  }
-  
-  .camera-view {
-    height: 50vh;
-    border-width: 2px;
-  }
-  
-  .photo-frame-display {
-    padding: 5px;
-  }
-  
-  .frame-slot {
-    min-width: 100px;
-    height: 140px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
   
   .countdown-number {

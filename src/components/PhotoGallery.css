@@ -94,51 +94,44 @@
 /* Media queries cho responsive design */
 @media screen and (max-width: 1200px) {
   .photo-gallery {
-    width: 150px;
+    width: 180px;
+  }
+  
+  .photo-inner img {
+    height: 180px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .photo-gallery {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  
-  .photo-gallery.left,
-  .photo-gallery.right {
-    left: 0;
-    right: 0;
-  }
-  
-  .gallery-container {
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px 0;
-  }
-  
-  .photo-frame {
-    min-width: 150px;
-    margin: 0 10px;
+    width: 150px;
+    padding: 15px;
   }
   
   .photo-inner img {
     height: 150px;
   }
+  
+  .gallery-container {
+    gap: 15px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .photo-gallery {
-    padding: 5px;
-  }
-  
-  .photo-frame {
-    min-width: 120px;
+    width: 120px;
+    padding: 10px;
   }
   
   .photo-inner img {
     height: 120px;
+  }
+  
+  .gallery-container {
+    gap: 10px;
+  }
+  
+  .photo-frame {
+    padding: 8px;
   }
 } 
