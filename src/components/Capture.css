@@ -484,6 +484,7 @@
   margin-bottom: 1rem;
   width: 100%;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .capture-btn, .back-btn, .download-btn, .retake-btn {
@@ -703,4 +704,83 @@
   color: #666;
   display: block;
   margin-top: 0.3rem;
+}
+
+/* Media queries cho responsive design */
+@media screen and (max-width: 1200px) {
+  .content-section {
+    width: 70%;
+    margin-right: 30%;
+  }
+  
+  .photo-frame-display {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .capture-container {
+    flex-direction: column;
+  }
+  
+  .content-section {
+    width: 100%;
+    margin-right: 0;
+    padding: 1rem;
+  }
+  
+  .photo-frame-display {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin: 1rem 0;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  .frame-slot {
+    min-width: 120px;
+    height: 160px;
+    margin-right: 10px;
+  }
+  
+  .camera-view {
+    height: 60vh;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .capture-btn, .back-btn, .download-btn, .retake-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content-section {
+    padding: 0.5rem;
+  }
+  
+  .camera-view {
+    height: 50vh;
+    border-width: 2px;
+  }
+  
+  .photo-frame-display {
+    padding: 5px;
+  }
+  
+  .frame-slot {
+    min-width: 100px;
+    height: 140px;
+  }
+  
+  .countdown-number {
+    font-size: 6rem;
+  }
 } 

@@ -73,6 +73,33 @@
   padding: 2rem;
 }
 
+/* Media queries cho responsive design */
+@media screen and (max-width: 1200px) {
+  .main-content:has(.home-container) {
+    margin: 0 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-content:has(.home-container) {
+    margin: 0 20px;
+  }
+  
+  .main-content:has(.capture-container) {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-content:has(.home-container) {
+    margin: 0 10px;
+  }
+  
+  .main-content:has(.capture-container) {
+    padding: 0.5rem;
+  }
+}
+
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }

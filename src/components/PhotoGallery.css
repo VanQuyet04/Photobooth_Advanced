@@ -89,4 +89,56 @@
   z-index: -1;
   transform: rotate(2deg);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries cho responsive design */
+@media screen and (max-width: 1200px) {
+  .photo-gallery {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .photo-gallery {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .photo-gallery.left,
+  .photo-gallery.right {
+    left: 0;
+    right: 0;
+  }
+  
+  .gallery-container {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+  
+  .photo-frame {
+    min-width: 150px;
+    margin: 0 10px;
+  }
+  
+  .photo-inner img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .photo-gallery {
+    padding: 5px;
+  }
+  
+  .photo-frame {
+    min-width: 120px;
+  }
+  
+  .photo-inner img {
+    height: 120px;
+  }
 } 
